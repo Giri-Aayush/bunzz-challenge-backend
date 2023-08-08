@@ -2,19 +2,11 @@ package main
 
 import (
 	"fmt"
+	"os"
 
 	"github.com/Giri-Aayush/bunzz-challenge-backend/handlers"
 	"github.com/labstack/echo/v4"
-	"github.com/spf13/viper"
 )
-
-func init() {
-	viper.SetConfigFile(".env")
-
-	if err := viper.ReadInConfig(); err != nil {
-		fmt.Printf("Error while reading config file %s", err)
-	}
-}
 
 func main() {
 	e := echo.New()
@@ -22,7 +14,7 @@ func main() {
 
 	e.POST("/fizzbuzz", h.GetMessage)
 
-	port := viper.GetString("PORT")
+	port := os.Getenv("PORT")
 	if port == "" {
 		port = "3000"
 	}

@@ -2,9 +2,9 @@ package handlers
 
 import (
 	"net/http"
+	"os"
 
 	"github.com/labstack/echo/v4"
-	"github.com/spf13/viper"
 )
 
 type DefaultResponse struct {
@@ -44,9 +44,9 @@ func (h *FizzBuzzHandler) GetMessage(c echo.Context) error {
 }
 
 func messageCondition(cnt int) string {
-	fizzMessage := viper.GetString("FIZZ_MESSAGE")
-	buzzMessage := viper.GetString("BUZZ_MESSAGE")
-	fizzBuzzMessage := viper.GetString("FIZZBUZZ_MESSAGE")
+	fizzMessage := os.Getenv("FIZZ_MESSAGE")
+	buzzMessage := os.Getenv("BUZZ_MESSAGE")
+	fizzBuzzMessage := os.Getenv("FIZZBUZZ_MESSAGE")
 
 	switch {
 	case cnt%3 == 0 && cnt%5 == 0:
