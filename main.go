@@ -16,7 +16,7 @@ func main() {
 	// Add CORS middleware
 	e.Use(middleware.CORSWithConfig(middleware.CORSConfig{
 		AllowOrigins: []string{"http://localhost:3000", "https://bunzz-challenge-frontend.vercel.app/"},
-		AllowMethods: []string{echo.POST},
+		AllowMethods: []string{echo.GET, echo.PUT, echo.POST, echo.DELETE},
 	}))
 
 	e.POST("/fizzbuzz", h.GetMessage)
