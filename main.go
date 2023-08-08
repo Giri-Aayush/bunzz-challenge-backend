@@ -22,7 +22,12 @@ func main() {
 
 	e.POST("/fizzbuzz", h.GetMessage)
 
-	if err := e.Start("localhost:3000"); err != nil {
+	port := viper.GetString("PORT")
+	if port == "" {
+		port = "3000"
+	}
+
+	if err := e.Start("0.0.0.0:" + port); err != nil {
 		fmt.Printf("Error while starting server %s", err)
 	}
 
