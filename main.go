@@ -15,7 +15,7 @@ func main() {
 
 	// Add CORS middleware
 	e.Use(middleware.CORSWithConfig(middleware.CORSConfig{
-		AllowOrigins: []string{"https://bunzz-challenge-frontend.vercel.app/"},
+		AllowOrigins: []string{"https://bunzz-challenge-frontend.vercel.app"},
 		AllowMethods: []string{echo.GET, echo.PUT, echo.POST, echo.DELETE},
 	}))
 
