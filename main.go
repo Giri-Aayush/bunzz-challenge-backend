@@ -6,11 +6,18 @@ import (
 
 	"github.com/Giri-Aayush/bunzz-challenge-backend/handlers"
 	"github.com/labstack/echo/v4"
+	"github.com/labstack/echo/v4/middleware"
 )
 
 func main() {
 	e := echo.New()
 	h := &handlers.FizzBuzzHandler{}
+
+	// Add CORS middleware
+	e.Use(middleware.CORSWithConfig(middleware.CORSConfig{
+		AllowOrigins: []string{"http://localhost:3000"},
+		AllowMethods: []string{echo.GET, echo.PUT, echo.POST, echo.DELETE},
+	}))
 
 	e.POST("/fizzbuzz", h.GetMessage)
 
